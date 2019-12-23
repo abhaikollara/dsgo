@@ -24,6 +24,22 @@ func (l *List) add(n int) {
 	}
 }
 
+func (l *List) delete(n int) {
+	if l.head.num == n {
+		l.head = l.head.next
+	} else {
+		cur := l.head
+		for cur.next != nil {
+			if cur.next.num == n {
+				cur.next = cur.next.next
+				break
+			} else {
+				cur = cur.next
+			}
+		}
+	}
+}
+
 func (l List) print() {
 	cur := l.head
 	for cur != nil {
@@ -39,5 +55,7 @@ func main() {
 	n.add(3)
 	n.add(7)
 	n.add(19)
+	n.print()
+	n.delete(7)
 	n.print()
 }
